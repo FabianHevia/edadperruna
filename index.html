@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edad Perruna</title>
+    <script src="static/edad_calcular.js"></script>
+</head>
+<body>
+    <h1>Bienvenidos a la app de edad perruna</h1>
+    <p>
+        En esta página encontraras
+        toda la información con respecto a
+        la edad de tu perro en años humanos.
+    </p>
+    <div>
+        <label>
+            Inserta la edad (años) del perro aquí:
+        </label>
+
+        <input type="number" id="edad" step="0.1" min="0">
+        </input>
+
+        <br><br>
+
+        <label>
+            Inserta el peso (kg) del perro aquí:
+        </label>
+
+        <input type="number" id="peso" step="0.1" min="0">
+        </input>
+
+    </div>
+
+    <br>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <h3>Resultados:</h3>
+    <p id="resultado1"></p>
+
+    <script>
+        function calcular() {
+            const edad = parseFloat(document.getElementById('edad').value);
+            console.log(edad);
+            const peso = parseFloat(document.getElementById('peso').value);
+
+            if (!isNaN(edad)) {
+                if (!isNaN(peso)) {
+                    const humanoPeso = edadHumanaPorPeso(edad, peso);
+                    document.getElementById('resultado1').innerText =
+                        `Edad del perro: ${humanoPeso} años humanos`;
+                } else {
+                    const humano = edadHumana(edad);
+                    document.getElementById('resultado1').innerText =
+                        `Edad del perro: ${humano} años humanos`;
+                }
+            } else {
+                document.getElementById('resultado1').innerText =
+                `Por favor, ingrese una edad valida`;
+            }
+        
+        }
+    </script>
+
+</body>
+</html>
